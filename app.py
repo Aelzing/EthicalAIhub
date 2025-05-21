@@ -22,9 +22,10 @@ if "avatar" not in st.session_state:
 if st.session_state.avatar is None:
     st.subheader("👤 Kies je rol")
     choice = st.radio("Wie ben jij vandaag?", list(avatars.keys()))
-    if st.button("Start"):
-        st.session_state.avatar = choice
-        st.experimental_rerun()
+if st.button("Start"):
+    st.session_state.avatar = choice
+    st.success("Avatar gekozen. Herlaad de pagina om verder te gaan.")
+    st.stop()  # Voorkomt verdere uitvoer in deze sessie
 else:
     st.success(f"Welkom, {st.session_state.avatar}! {avatars[st.session_state.avatar]}")
 
